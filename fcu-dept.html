@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>fcu-dept</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    </head>
+    <body>
+		<h2>請選擇學院</h2>
+		<select id="colleges_list"></select>
+		<h2>請選擇系所</h2>
+		<select id="dept_list"></select>
+    </body>
+	<script>
+		var array = [
+		["商學院","會計學系", "國際經營與貿易學系", "國際經營與貿易學系國際企業管理全英語學士班", "財稅學系 ", "合作經濟暨社會事業經營學系", "統計學系", "經濟學系", "企業管理學系", "行銷學系", "國際企業管理學士學位學程(英語專班) ", "商學進修學士學位學程", "財經法律研究所", "科技管理碩士學位學程", "產業碩士專班", "商學專業碩士在職學位學程", "商學博士學位學程"],
+		["工學院","機械與電腦輔助工程學系", "纖維與複合材料學系", "工業工程與系統管理學系", "化學工程學系", "航太與系統工程學系", "精密系統設計學士學位學程", "電聲碩士學位學程", "綠色能源科技碩士學位學程", "創意設計碩士學位學程", "材料與製造工程碩士在職專班"]
+		["建設學院","土木工程學系", "水利工程與資源保育學系", "都市計畫與空間資訊學系", "運輸與物流學系", "土地管理學系", "景觀與遊憩碩士學位學程"],
+		];
+		$(document).ready(function(){
+			var $college = $('select[id="colleges_list"]');
+			for (i = 0; i < array.length; i++  ){
+				$college.append($("<option></option>").attr("value",i).text(array[i][0]));
+			}
+			
+			var  $department = $('select[id="dept_list"]');
+			for (i = 1; i < array.length; i++){
+				$department.append($("<option></option>").attr("value",i).text(array[0][i]));
+			}
+		$college.on("change", function() {
+			$department.text("");
+			for (i = 1; i < array[$college.val()].length; i++){
+				$department.append($("<option></option>").attr("value",i).text(array[$college.val()][i]));
+			}
+		});
+		});
+  
+    </script>
+  </html>
